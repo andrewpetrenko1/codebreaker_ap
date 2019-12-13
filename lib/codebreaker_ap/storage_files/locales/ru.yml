@@ -3,3 +3,4 @@ ru:
   wrong_difficulty: 'Неправильная сложность.'
   wrong_chars: 'Числа должны быть от 1 до 6!'
   no_hint: 'Подсказки закончились.'
+  file_rules: 'rules/rules_ru.yaml'
