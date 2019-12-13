@@ -1,0 +1,5 @@
+en:
+  wrong_length: 'Wrong length error!'
+  wrong_difficulty: 'Wrong difficulty error!'
+  wrong_chars: 'Numbers must be from 1 to 6!'
+  no_hint: 'No hints left.'

@@ -1,0 +1,12 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+lib/codebreaker/storage_files/statistic.yml
+
+# rspec failure tracking
+.rspec_status
