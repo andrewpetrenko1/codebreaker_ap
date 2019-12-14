@@ -1,4 +1,6 @@
 require 'i18n'
+I18n.load_path << Dir[File.expand_path('lib/codebreaker_ap/storage_files/locales') + '/*.yml']
+I18n.available_locales = :en, :ru
 require 'yaml'
 require 'codebreaker_ap/modules/storage'
 require 'codebreaker_ap/modules/statistic'

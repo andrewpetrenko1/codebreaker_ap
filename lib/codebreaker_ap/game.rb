@@ -2,6 +2,7 @@ module CodebreakerAp
   class Game
     include Storage
     include Statistic
+
     LOCALES_FOLDER = 'lib/codebreaker_ap/storage_files'.freeze
     CODE_LENGTH = 4
     CODE_LENGTH_RANGE = (1..4).freeze
@@ -35,8 +36,8 @@ module CodebreakerAp
       difficulty.hint(@hints_code)
     end
 
-    def show_rules(locale_file)
-      rules = read_from_file("#{LOCALES_FOLDER}/#{locale_file}")
+    def show_rules
+      rules = read_from_file("#{LOCALES_FOLDER}/#{I18n.t(:file_rules)}")
       return unless rules
 
       puts rules
