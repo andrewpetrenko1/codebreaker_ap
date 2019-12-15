@@ -80,4 +80,26 @@ RSpec.describe CodebreakerAp::Game do
     game.check_answer('1234')
     expect(game.win?).to be(true)
   end
+
+  describe 'statistic' do
+    let(:content) do
+      {
+      player: 'andrew',
+      difficulty: 'easy',
+      total_attempts: 15,
+      total_hints: 2,
+      used_attempts: 0,
+      used_hints: 0
+      }
+    end
+    it 'save and show stats' do
+      test_file = 'spec/entities_specs/statistic_test_file.yml'.freeze
+      statistic_file = CodebreakerAp::Statistic::STATISTIC_FILE
+      CodebreakerAp::Statistic::STATISTIC_FILE = test_file
+      game.save_stats('andrew', game.difficulty)
+      expect(game.show_stats).to include(content)
+      File.delete(test_file) if File.exist?(test_file)
+      CodebreakerAp::Statistic::STATISTIC_FILE = statistic_file
+    end
+  end
 end

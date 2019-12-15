@@ -1,7 +1,7 @@
 module CodebreakerAp
   module Storage
     def save_to_file(data, file_name)
-      File.open(file_name, 'a') do |this_file|
+      File.open(file_name, 'a+') do |this_file|
         this_file.write(YAML.dump(data))
       end
     end
