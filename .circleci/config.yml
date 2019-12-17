@@ -9,9 +9,6 @@ executors:
         environment:
           ENV: test
 
-caches: 
-  - &bundle_cache v1-repo-{{ checksum "Gemfile.lock" }}
-
 commands:
   run_linters:
     description: command to start linters
@@ -36,12 +33,8 @@ commands:
   setup_environment:
     steps:
       - checkout
-      - restore_cache:
-          key: *bundle_cache
       - run: gem install bundler
       - run: bundle install
-      - save_cache:
-          key: *bundle_cache
 jobs:
   lintering:
     executor: default
