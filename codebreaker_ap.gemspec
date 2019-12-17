@@ -11,6 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Codebreaker game'
   spec.description   = 'Codebreaker is a logic game in which a code-breaker tries to break a secret code.'
   spec.homepage      = 'https://github.com/andrewpetrenko1/codebreaker_ap'
+  spec.license       = 'MIT'
 
   spec.metadata["homepage_uri"] = spec.homepage
 
