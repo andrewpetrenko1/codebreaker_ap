@@ -5,7 +5,7 @@ executors:
     working_directory: ~/repo
     description: The official CircleCI Ruby Docker image
     docker:
-      - image: circleci/ruby:2.6.3-node-browsers
+      - image: circleci/ruby:2.6.3
         environment:
           ENV: test
 
@@ -38,7 +38,14 @@ commands:
       - checkout
       - restore_cache:
           key: *bundle_cache
-      - run: bundle
+      - restore_cache:
+          key: *bundle_cache
+      - run: gem install bundler
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle_cache
+          paths:
+            - vendor/bundle
 jobs:
   lintering:
     executor: default
