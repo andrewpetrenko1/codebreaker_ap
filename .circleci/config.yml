@@ -21,7 +21,7 @@ commands:
           command: bundle exec rubocop
       - run: 
           name: fasterer
-          command: bundle exec fasterer -q
+          command: bundle exec fasterer
 
   run_specs:
     steps:
@@ -38,14 +38,10 @@ commands:
       - checkout
       - restore_cache:
           key: *bundle_cache
-      - restore_cache:
-          key: *bundle_cache
       - run: gem install bundler
-      - run: bundle install --path vendor/bundle
+      - run: bundle install
       - save_cache:
           key: *bundle_cache
-          paths:
-            - vendor/bundle
 jobs:
   lintering:
     executor: default
@@ -66,3 +62,4 @@ workflows:
       - run_specs:
           requires:
             - lintering
+        only_branch: develop
