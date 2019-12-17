@@ -58,14 +58,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
+  bundler (~> 2.1.0)
   codebreaker_ap!
-  fasterer
-  i18n
+  fasterer (~> 0.8.1)
+  i18n (~> 1.7.0)
   rake (~> 10.0)
   rspec (~> 3.0)
-  rubocop
-  simplecov
+  rubocop (~> 0.77.0)
+  simplecov (~> 0.17.1)
 
 BUNDLED WITH
    2.1.0
