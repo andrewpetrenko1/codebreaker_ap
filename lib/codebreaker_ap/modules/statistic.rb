@@ -1,6 +1,6 @@
 module CodebreakerAp
   module Statistic
-    STATISTIC_FILE = 'lib/codebreaker_ap/storage_files/statistic.yml'.freeze
+    STATISTIC_FILE = File.expand_path('../storage_files/statistic.yml', __dir__)
     def save_stats(player_name, difficulty)
       save_to_file(create_statistic_data(player_name, difficulty), STATISTIC_FILE)
     end

@@ -3,7 +3,7 @@ module CodebreakerAp
     include Storage
     include Statistic
 
-    LOCALES_FOLDER = 'lib/codebreaker_ap/storage_files'.freeze
+    LOCALES_FOLDER = File.expand_path('storage_files', __dir__)
     CODE_LENGTH = 4
     CODE_LENGTH_RANGE = (1..4).freeze
     SECRET_CODE_NUMBERS_RANGE = (1..6).freeze
