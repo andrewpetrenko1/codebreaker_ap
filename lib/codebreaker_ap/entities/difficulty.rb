@@ -32,7 +32,7 @@ module CodebreakerAp
     end
 
     def hint(hints_code)
-      return I18n.t(:no_hint) if @hints.zero?
+      return Message.new.no_hint if @hints.zero?
 
       @hints -= 1
       hints_code.pop

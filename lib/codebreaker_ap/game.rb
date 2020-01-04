@@ -37,10 +37,10 @@ module CodebreakerAp
     end
 
     def show_rules
-      rules = read_from_file("#{LOCALES_FOLDER}/#{I18n.t(:file_rules)}")
+      rules = read_from_file("#{LOCALES_FOLDER}/#{Message.new.file_rules}")
       return unless rules
 
-      puts rules
+      rules
     end
 
     private

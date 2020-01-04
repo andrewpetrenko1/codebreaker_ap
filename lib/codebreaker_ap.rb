@@ -4,6 +4,7 @@ I18n.available_locales = :en, :ru
 require 'yaml'
 require 'codebreaker_ap/modules/storage'
 require 'codebreaker_ap/modules/statistic'
+require 'codebreaker_ap/entities/message'
 require 'codebreaker_ap/modules/errors'
 require 'codebreaker_ap/modules/validation'
 require 'codebreaker_ap/entities/base_entity'
