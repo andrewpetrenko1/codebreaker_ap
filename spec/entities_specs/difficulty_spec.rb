@@ -1,12 +1,6 @@
 RSpec.describe CodebreakerAp::Difficulty do
   subject(:difficulty) { described_class.new }
 
-  context 'difficulty error' do
-    it 'WrongDifficultyError' do
-      difficulty.initialize_difficulty('wrong difficulty')
-      expect(difficulty.errors).to include(CodebreakerAp::WrongDifficultyError)
-    end
-  end
   context 'difficulty apply' do
     it 'easy level' do
       difficulty.initialize_difficulty('easy')

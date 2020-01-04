@@ -1,5 +1,5 @@
 module CodebreakerAp
-  class Player < BaseEntity
+  class Player
     attr_reader :name
     attr_accessor :answer, :validated
 
@@ -9,44 +9,22 @@ module CodebreakerAp
     def initialize
       @name = nil
       @answer = nil
-      super()
     end
 
     def setup_name(player_name)
-      @name = player_name
-      valid_instance?
+      check = Validator.new
+      check.validate_length(player_name, NAME_LENGTH)
+      return check.errors unless check.errors.empty?
+
+      @name = player_name.capitalize
     end
 
     def setup_answer(answer)
+      check = Validator.new
+      check.validate_player_answer(answer, ANSWER_LENGTH, ANSWER_CHARS_RANGE)
+      return check.errors unless check.errors.empty?
+
       @answer = answer
-      valid_instance?
-    end
-
-    private
-
-    def valid_instance?
-      valid?
-      return if validated
-
-      puts errors
-    end
-
-    def validate
-      @errors << validate_name if name
-      @errors << validate_answer if answer
-    rescue WrongLengthError => e
-      @errors.push(e)
-    rescue WrongNumbersError => e
-      @errors.push(e)
-    end
-
-    def validate_name
-      check_length(@name, NAME_LENGTH)
-    end
-
-    def validate_answer
-      check_length(@answer, ANSWER_LENGTH)
-      check_chars_range(@answer, ANSWER_CHARS_RANGE)
     end
   end
 end

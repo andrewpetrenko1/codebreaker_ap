@@ -1,5 +1,5 @@
 module CodebreakerAp
-  class Difficulty < BaseEntity
+  class Difficulty
     DIFFICULTY = {
       easy: {
         hints: 2,
@@ -22,13 +22,15 @@ module CodebreakerAp
       @level = nil
       @hints = nil
       @attempts = nil
-      super()
     end
 
     def initialize_difficulty(level)
+      check = Validator.new
+      check.validate_difficulty(level, DIFFICULTY.keys)
+      return check.errors unless check.errors.empty?
+
       @level = level
-      valid?
-      setup_difficulty if validated
+      setup_difficulty
     end
 
     def hint(hints_code)
@@ -44,12 +46,6 @@ module CodebreakerAp
       difficulty_options = DIFFICULTY[@level.to_sym]
       @hints = difficulty_options[:hints]
       @attempts = difficulty_options[:attempts]
-    end
-
-    def validate
-      check_difficulty(@level.to_sym, DIFFICULTY.keys)
-    rescue WrongDifficultyError => e
-      @errors.push(e)
     end
   end
 end
