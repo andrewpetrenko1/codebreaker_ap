@@ -11,7 +11,7 @@ The codebreaker gets some number of chances to break the code (depends on chosen
 Include to Gemfile:
 
 ```ruby
-gem 'game_codebreaker_ap'
+gem 'codebreaker_ap'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install game_codebreaker_ap
+    $ gem install codebreaker_ap
 
 ## Usage
 
