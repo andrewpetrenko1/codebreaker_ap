@@ -13,7 +13,7 @@ RSpec.describe CodebreakerAp::Difficulty do
       expect(difficulty.attempts).to eq(10)
     end
     it 'hell level' do
-      difficulty.initialize_difficulty('hell')
+      difficulty.initialize_difficulty('difficult')
       expect(difficulty.hints).to eq(1)
       expect(difficulty.attempts).to eq(5)
     end

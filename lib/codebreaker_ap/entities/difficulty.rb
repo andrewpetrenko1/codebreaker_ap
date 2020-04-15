@@ -9,7 +9,7 @@ module CodebreakerAp
         hints: 1,
         attempts: 10
       },
-      hell: {
+      difficult: {
         hints: 1,
         attempts: 5
       }

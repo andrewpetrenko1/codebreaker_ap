@@ -5,9 +5,15 @@ module CodebreakerAp
       save_to_file(create_statistic_data(player_name, difficulty), STATISTIC_FILE)
     end
 
+    def load_statistic
+      data = YAML.load_stream(File.open(STATISTIC_FILE, 'a+'))
+      return unless data
+
+      data.sort_by { |players| [-players[:difficulty].length, players[:used_attempts], players[:used_hints]] }
+    end
+
     def show_stats
-      statistic = load_statistic
-      statistic.each_with_index do |value, index|
+      load_statistic.each_with_index do |value, index|
         puts statistic(value, index + 1)
       end
     end
@@ -22,7 +28,8 @@ module CodebreakerAp
         total_attempts: difficulty_total[:attempts],
         total_hints: difficulty_total[:hints],
         used_attempts: difficulty_total[:attempts] - difficulty.attempts,
-        used_hints: difficulty_total[:hints] - difficulty.hints
+        used_hints: difficulty_total[:hints] - difficulty.hints,
+        date: Time.now.strftime('%d/%m/%Y %H:%M')
       }
     end
 
@@ -33,14 +40,8 @@ module CodebreakerAp
       "Total attempts: #{value[:total_attempts]}\n"\
       "Total hints: #{value[:total_hints]}\n"\
       "Used attempts: #{value[:used_attempts]}\n"\
-      "Used hints: #{value[:used_hints]}\n\n"
-    end
-
-    def load_statistic
-      data = YAML.load_stream(File.open(STATISTIC_FILE, 'a+'))
-      return unless data
-
-      data.sort_by { |players| [players[:difficulty], players[:used_attempts]] }
+      "Used hints: #{value[:used_hints]}\n"\
+      "Date: #{value[:date]}\n\n"
     end
   end
 end

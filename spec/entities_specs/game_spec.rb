@@ -89,7 +89,8 @@ RSpec.describe CodebreakerAp::Game do
       total_attempts: 15,
       total_hints: 2,
       used_attempts: 0,
-      used_hints: 0
+      used_hints: 0,
+      date: Time.now.strftime("%d/%m/%Y %H:%M")
       }
     end
     it 'save and show stats' do
