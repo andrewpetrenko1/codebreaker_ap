@@ -24,22 +24,28 @@ Or install it yourself as:
 
 ## Usage
 
-Create and setup difficulty:
+Create object: 
 ```ruby
 game = Codebreaker::Game.new
+```
+Setup difficulty:
+```ruby
 game.difficulty.initialize_difficulty('hell')
 ```
-Print statistic:
+Print or get statistic:
 ```ruby
-game.show_stats
+game.show_stats #print
+game.load_statistic #get pure statistic without labels
 ```
-Check entered answer and return pluses, minuses or empty spaces:
+Print rules:
+```ruby
+game.show_rules
+```
+Check entered answer and return '+', '-' or ' ':
 ```ruby
 game.check_answer('1234')
 ```
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+# Console
+Also available console for this game: [codebreaker_ap-console
+](https://github.com/andrewpetrenko1/codebreaker_ap-console "codebreaker_ap-console") 
